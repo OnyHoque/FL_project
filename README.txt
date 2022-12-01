@@ -2,7 +2,7 @@
 
 
 Command:
-python -m main --model=ResNet50 --epoch=10 --mnode=10 --position=front
+python -m main --model=Generic --epoch=10 --mnode=10 --position=front
 
 --model:    Using this parameter you can pass the name of the model. All valid options are:
             ResNet50
@@ -11,6 +11,7 @@ python -m main --model=ResNet50 --epoch=10 --mnode=10 --position=front
             VGG16
             InceptionV3
             EfficientNetB7
+            Generic
 
 --epoch:    It is the epoch used for training by each nodes
 
@@ -19,9 +20,13 @@ python -m main --model=ResNet50 --epoch=10 --mnode=10 --position=front
 --position: Using this parameter you can pass the position of the malicous nodes in the training process. All valid options are
             front   : To place all malicious nodes in the front
             end     : To place all malicious nodes in the end
-            Random  : To randomly place malicious nodes in various parts of the training phase
+            random  : To randomly place malicious nodes in various parts of the training phase
             none    : To train the FL model cleanly without any malicous nodes
 
 
+
+# How to run the code:
+You need to save the graphs by running the following code and changing the --mnode from 10 to 100 by a increment of 10 steps.
+python -m main --model=Generic --epoch=10 --position=front --mnode=0
 
 

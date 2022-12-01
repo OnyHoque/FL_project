@@ -30,8 +30,9 @@ class Node:
     
     def train(self, epoch):
         history = self.model.fit(self.x_train, self.y_train, epochs=epoch, batch_size=100, verbose=0, validation_split=0.1)
+        new_weights = self.model.get_weights()
         print("Node: ",self.node_number, " says:","Traning complete.")
-        return history.history['loss']
+        return history.history['loss'], new_weights
 
     def get_model(self):
         return self.model

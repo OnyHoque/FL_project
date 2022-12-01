@@ -1,5 +1,5 @@
 import numpy as np
-import tensorflow as tf
+import copy
 from Nodes import Node
 import keras.utils.np_utils as kutils
 from keras.preprocessing.image import ImageDataGenerator
@@ -31,12 +31,12 @@ def getNodes():
 
     nodes = []
 
-    for i in range(100):
-        start = 200*i
-        end = 200*(i+1)
-        n = Node(x_train[start:end], y_train[start:end], node_number=i)
-        nodes.append(n)
+    X = x_train.reshape(10, 20000, 32, 32, 3)
+    Y = y_train.reshape(10, 2000)
 
+    for i in range(10):
+        n = Node(X[i], Y[i], node_number=i)
+        nodes.append(n)
     return nodes, x_test, y_test
 
 def makeNodeMalicious(node_obj):

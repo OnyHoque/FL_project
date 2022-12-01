@@ -49,7 +49,7 @@ def getModel(model_name):
         model.add(Dropout(0.5))
 
         model.add(Dense(1,activation='sigmoid'))
-        sgd = SGD(lr=0.001, momentum=0.9)
+        sgd = SGD(learning_rate=0.001, momentum=0.9)
         model.compile(optimizer=sgd, loss='binary_crossentropy',  metrics=['accuracy'])
         return model
 
@@ -57,7 +57,7 @@ def getModel(model_name):
     out = Flatten()(out)
     output = Dense(1, activation='sigmoid')(out)
     model = tf.keras.models.Model(inputs=keras_model.input, outputs=output)
-    sgd = SGD(lr=0.001, momentum=0.9)
+    sgd = SGD(learning_rate=0.001, momentum=0.9)
     model.compile(optimizer=sgd, loss='binary_crossentropy',  metrics=['accuracy'])
 
     return model
